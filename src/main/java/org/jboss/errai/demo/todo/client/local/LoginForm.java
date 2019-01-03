@@ -59,6 +59,7 @@ public class LoginForm extends Composite {
 	public void signUp(ClickEvent e) {
 		//User model=userBinder.getModel();
 		Window.alert("Clicked Signup. User="+user.getUsername());
+		// Example of navigating to another page
 		goToSignup.go();
 	}	
 }

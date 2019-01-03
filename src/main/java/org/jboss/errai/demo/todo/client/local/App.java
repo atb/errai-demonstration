@@ -27,15 +27,15 @@ public class App {
   @PostConstruct
   public void onLoad() {
 	  
-//	    VerticalPanel vp = new VerticalPanel();
-//
-//	    vp.add(navigation.getContentPanel());
-//
-//	    vp.add(loginForm);
-//	    vp.add(signUpPage);
-//
-//	    RootPanel.get().add(vp);
+	    VerticalPanel vp = new VerticalPanel();
 
+	    vp.add(navigation.getContentPanel());
+	    // vp.add(loginForm);
+	    //vp.add(signUpPage);
+
+	    RootPanel.get().add(vp);
+
+	    /*
 	    SplitLayoutPanel p = new SplitLayoutPanel();
 	    p.addWest(new HTML("navigation"), 128);
 	    p.addNorth(new HTML("list new"), 20);
@@ -46,7 +46,7 @@ public class App {
 //	    vp.onResize();
 	    
 	    RootPanel.get().add(p);
-	  
+	  */
 
    // Window.alert("Hello World!");
    //RootPanel.get().add(loginForm);

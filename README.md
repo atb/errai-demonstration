@@ -1,3 +1,9 @@
+Errai Demonstration
+===================
+
+This is a demo application that demonstrates several Errai technologies.
+
+
 Errai To-Do List Demo
 =====================
 

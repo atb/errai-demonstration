@@ -44,7 +44,12 @@ public class SignUpPage extends Composite {
 			  }
 			};
 		contactService.call(callback).listAllContacts();
-
+		 
+		contactService.call(
+				(List<Contact> contacts) -> 
+					Window.alert("Lambda: Contacts received: " + contacts.size())
+				).listAllContacts();
+		
 		goToLoginForm.go();
 		
 	}

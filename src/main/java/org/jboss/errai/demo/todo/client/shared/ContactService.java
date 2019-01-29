@@ -38,4 +38,10 @@ public interface ContactService {
   @GET
   @Produces("application/json")
   public List<Contact> listAllContacts();
+  
+  
+  @POST
+  @Consumes("application/json")
+  @Produces("text/plain")
+  public Response createContact(Contact contact);
 }

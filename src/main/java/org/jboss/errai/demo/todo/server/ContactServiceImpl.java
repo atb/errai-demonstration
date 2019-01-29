@@ -42,21 +42,28 @@ import org.jboss.errai.demo.todo.client.shared.ContactService;
 @ApplicationScoped
 public class ContactServiceImpl implements ContactService {
 
-  private static AtomicInteger id = new AtomicInteger(3);
+	private static AtomicInteger id = new AtomicInteger(3);
 
-  private static Map<Long, Contact> contacts = new ConcurrentHashMap<Long, Contact>() {
-    {
-      put(1l, new Contact(1, "Christian"));
-      put(2l, new Contact(2, "Mike"));
-      put(3l, new Contact(3, "Jonathan"));
-    }
-  };
+	private static Map<Long, Contact> contacts = new ConcurrentHashMap<Long, Contact>() {
+		{
+			put(1l, new Contact(1, "Christian"));
+			put(2l, new Contact(2, "Mike"));
+			put(3l, new Contact(3, "Jonathan"));
+		}
+	};
 
+	@Override
+	public List<Contact> listAllContacts() {
+		List<Contact> contacts = new ArrayList<Contact>(ContactServiceImpl.contacts.values());
+		Collections.sort(contacts);
+		return contacts;
+	}
 
-  @Override
-  public List<Contact> listAllContacts() {
-    List<Contact> contacts = new ArrayList<Contact>(ContactServiceImpl.contacts.values());
-    Collections.sort(contacts);
-    return contacts;
-  }
+	@Override
+	public Response createContact(Contact contact) {
+		long newId = id.addAndGet(1);
+		contact.setId(newId);
+		contacts.put(newId, contact);
+		return Response.ok(contact.getId()).build();
+	}
 }

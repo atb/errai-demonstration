@@ -5,7 +5,9 @@
     <exclude name = "org.jboss.errai.demo.todo.client.local.SignUpPage" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.User" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.SignUpPage$1" />
+    <exclude name = "org.jboss.errai.demo.todo.client.local.ContactDisplay" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.App" />
+    <exclude name = "org.jboss.errai.demo.todo.client.local.ContactListPage" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.LoginForm" />
     <!-- End of Errai exclusions -->
   </scan>

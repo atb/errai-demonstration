@@ -73,3 +73,10 @@ To try it in GWT's dev mode, after completing the above steps, do this:
     % mvn gwt:run
 
 Then click "Launch in Default Browser" on the GWT Dev Mode window that appears.
+
+Debug Server Code
+-----------------
+
+Type: mvn gwt:debug
+
+

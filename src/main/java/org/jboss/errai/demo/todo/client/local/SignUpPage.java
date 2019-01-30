@@ -59,7 +59,8 @@ public class SignUpPage extends Composite {
 	public void createContact(ClickEvent e) {
 	
 		contactService.call((Response response) -> {
-					Window.alert("Lambda: Contact created: " + MarshallingWrapper.fromJSON(response.getText(), Long.class));
+					//Window.alert("Lambda: Contact created: " + MarshallingWrapper.fromJSON(response.getText(), Long.class));
+					//Window.alert("Lambda: Contact created: " + response.getText());
 					goToLoginForm.go();
 		}).createContact(contact);
 	}

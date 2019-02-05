@@ -3,6 +3,9 @@ Errai Demonstration
 
 This is a demo application that demonstrates several Errai technologies.
 
+This demonstration is based on [errai-jpa-demo-todo-list](https://github.com/errai/errai/tree/master/errai-demos/errai-jpa-demo-todo-list) 
+but it has been updated to a "contact list application" and simplified as much as possible. 
+
 
 Errai To-Do List Demo
 =====================
@@ -74,9 +77,20 @@ To try it in GWT's dev mode, after completing the above steps, do this:
 
 Then click "Launch in Default Browser" on the GWT Dev Mode window that appears.
 
+Contact List App
+----------------
+
+Run with Code-and-Refresh
+-------------------------
+
+    % mvn gwt:run
+
 Debug Server Code
 -----------------
 
-Type: mvn gwt:debug
+Type:
+
+    % mvn gwt:debug
+
 
 

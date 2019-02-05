@@ -28,7 +28,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 
-@Page(role = DefaultPage.class)
+@Page
 @Templated("LoginForm.html#form-login")
 public class LoginForm extends Composite {
 

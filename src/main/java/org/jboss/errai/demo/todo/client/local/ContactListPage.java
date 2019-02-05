@@ -11,6 +11,7 @@ import org.jboss.errai.databinding.client.api.DataBinder;
 import org.jboss.errai.databinding.client.components.ListComponent;
 import org.jboss.errai.demo.todo.client.shared.Contact;
 import org.jboss.errai.demo.todo.client.shared.ContactService;
+import org.jboss.errai.ui.nav.client.local.DefaultPage;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
@@ -23,7 +24,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
-@Page
+@Page(role = DefaultPage.class)
 @Templated(value = "LoginForm.html#contact-list")
 public class ContactListPage {
 

@@ -25,7 +25,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
 @Page(role = DefaultPage.class)
-@Templated(value = "LoginForm.html#contact-list")
+@Templated(value = "ContactListPage.html#contact-list")
 public class ContactListPage {
 
 	@Inject
@@ -39,17 +39,10 @@ public class ContactListPage {
 	
 	@Inject
 	@DataField
-	private Button gohome;
-
-	@Inject
-	@DataField
 	private Button newcontact;
-	
+		
 	@Inject
-	TransitionTo<LoginForm> goToLogin;
-	
-	@Inject
-	TransitionTo<SignUpPage> goToSignup;	
+	TransitionTo<NewContactPage> goToSignup;	
 	
 	// (ATB) How to fill a list of contacts...
 	@Inject
@@ -77,12 +70,6 @@ public class ContactListPage {
 		//list.setSelector(display -> display.setSelected(true));
 		//list.setDeselector(display -> display.setSelected(false));
 	}
-
-	@EventHandler("gohome")
-	public void signUp(ClickEvent e) {
-		goToLogin.go();
-	}
-
 
 	@EventHandler("newcontact")
 	public void newContact(ClickEvent e) {

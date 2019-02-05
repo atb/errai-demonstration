@@ -14,7 +14,7 @@ import com.google.gwt.user.client.TakesValue;
 
 import elemental2.dom.HTMLDivElement;
 
-@Templated(value = "LoginForm.html#contact")
+@Templated(value = "ContactListPage.html#contact")
 public class ContactDisplay implements TakesValue<Contact>, IsElement {
 
 	@Inject

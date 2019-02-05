@@ -16,7 +16,7 @@ public class NavBar extends Composite {
 
   @Inject @DataField Button info;
 
-  @Inject TransitionTo<LoginForm> homeTab;
+  @Inject TransitionTo<ContactListPage> homeTab;
 
   @EventHandler("info")
   public void onHomeButtonClick(ClickEvent e) {

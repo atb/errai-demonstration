@@ -28,8 +28,8 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.http.client.Response;
 
 @Page
-@Templated("SignUpPage.html#form-signup")
-public class SignUpPage extends Composite {
+@Templated("NewContactPage.html#form-newcontact")
+public class NewContactPage extends Composite {
 
 	@Inject
 	@Model
@@ -45,12 +45,9 @@ public class SignUpPage extends Composite {
 	@DataField
 	private Button create;
 
-	@Inject
-	@DataField
-	private Button cancel;
 	
 	@Inject
-	TransitionTo<LoginForm> goToLoginForm;
+	TransitionTo<ContactListPage> goToContactListPage;
 	
 	@Inject
 	private Caller<ContactService> contactService;
@@ -61,14 +58,7 @@ public class SignUpPage extends Composite {
 		contactService.call((Response response) -> {
 					//Window.alert("Lambda: Contact created: " + MarshallingWrapper.fromJSON(response.getText(), Long.class));
 					//Window.alert("Lambda: Contact created: " + response.getText());
-					goToLoginForm.go();
+					goToContactListPage.go();
 		}).createContact(contact);
 	}
-
-	@EventHandler("cancel")
-	public void cancel(ClickEvent e) {
-		goToLoginForm.go();
-		
-	}
-
 }

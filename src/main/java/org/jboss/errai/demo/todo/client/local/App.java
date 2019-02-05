@@ -5,52 +5,33 @@ import javax.inject.Inject;
 
 import org.jboss.errai.ioc.client.api.EntryPoint;
 import org.jboss.errai.ui.nav.client.local.Navigation;
+import org.jboss.errai.ui.shared.api.annotations.DataField;
+import org.jboss.errai.ui.shared.api.annotations.Templated;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.SimpleLayoutPanel;
-import com.google.gwt.user.client.ui.SplitLayoutPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 
+@Templated("#body")
 @EntryPoint
+public class App extends Composite {
 
-public class App {
+  @Inject
+  private Navigation navigation;
 
-	@Inject LoginForm loginForm;
-	@Inject SignUpPage signUpPage;
-	
-	@Inject
-	private Navigation navigation;
-	
+  @Inject
+  @DataField
+  private NavBar navbar;
+
+  @Inject
+  @DataField
+  private SimplePanel content;
+
   @PostConstruct
-  public void onLoad() {
-	  
-	    VerticalPanel vp = new VerticalPanel();
-
-	    vp.add(navigation.getContentPanel());
-	    // vp.add(loginForm);
-	    //vp.add(signUpPage);
-
-	    RootPanel.get().add(vp);
-
-	    /*
-	    SplitLayoutPanel p = new SplitLayoutPanel();
-	    p.addWest(new HTML("navigation"), 128);
-	    p.addNorth(new HTML("list new"), 20);
-	    p.addNorth(loginForm, 300);
-//	    SimpleLayoutPanel vp = new SimpleLayoutPanel();
-//	    vp.add(loginForm);
-//	    p.add(vp);
-//	    vp.onResize();
-	    
-	    RootPanel.get().add(p);
-	  */
-
-   // Window.alert("Hello World!");
-   //RootPanel.get().add(loginForm);
-   //RootPanel.get().add(signUpPage);  
+  public void clientMain() {
+    content.clear();
+    content.add(navigation.getContentPanel());
+    RootPanel.get().add(this);
   }
-
 }

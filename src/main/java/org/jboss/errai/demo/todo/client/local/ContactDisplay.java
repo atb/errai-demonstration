@@ -34,5 +34,10 @@ public class ContactDisplay implements TakesValue<Contact>, IsElement {
 	@Inject
 	@Bound
 	@DataField
-	private HTMLDivElement firstname;
+	private HTMLDivElement name;
+	
+	@Inject
+	@Bound
+	@DataField
+	private HTMLDivElement email;
 }

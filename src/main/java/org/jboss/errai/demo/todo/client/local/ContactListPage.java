@@ -21,7 +21,6 @@ import org.jboss.errai.ui.shared.api.annotations.EventHandler;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
 @Page(role = DefaultPage.class)
@@ -42,18 +41,16 @@ public class ContactListPage {
 	private Button newcontact;
 		
 	@Inject
-	TransitionTo<NewContactPage> goToSignup;	
+	TransitionTo<NewContactPage> goToNewContact;	
 	
-	// (ATB) How to fill a list of contacts...
 	@Inject
 	private Caller<ContactService> contactService;
 
 	/**
-	 * Register handlers and populate the list of {@link Contact Contacts}.
+	 * This method is called after page construction and before display
 	 */
 	@PostConstruct
 	private void setup() {
-		
 		/*
 		 * Triggers an HTTP request to the ContactStorageService. The call back will be
 		 * invoked asynchronously to display all retrieved contacts.
@@ -62,17 +59,10 @@ public class ContactListPage {
 
 		// Remove placeholder table row from template.
 		DOMUtil.removeAllElementChildren(list.getElement());
-
-		/*
-		 * Configure actions for when a ContactDisplay in the list is selected or
-		 * deselected.
-		 */
-		//list.setSelector(display -> display.setSelected(true));
-		//list.setDeselector(display -> display.setSelected(false));
 	}
 
 	@EventHandler("newcontact")
 	public void newContact(ClickEvent e) {
-		goToSignup.go();
+		goToNewContact.go();
 	}
 }

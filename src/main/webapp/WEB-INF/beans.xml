@@ -2,13 +2,12 @@
 <beans xmlns="http://xmlns.jcp.org/xml/ns/javaee">
   <scan>
     <!-- These exclusions were added by Errai to avoid deploying client-side classes to the server -->
-    <exclude name = "org.jboss.errai.demo.todo.client.local.SignUpPage" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.User" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.ContactDisplay" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.NavBar" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.App" />
+    <exclude name = "org.jboss.errai.demo.todo.client.local.NewContactPage" />
     <exclude name = "org.jboss.errai.demo.todo.client.local.ContactListPage" />
-    <exclude name = "org.jboss.errai.demo.todo.client.local.LoginForm" />
     <!-- End of Errai exclusions -->
   </scan>
 </beans>

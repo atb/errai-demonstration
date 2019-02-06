@@ -16,70 +16,30 @@
 
 package org.jboss.errai.demo.todo.server;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.spi.BeanManager;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
-import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.jboss.errai.demo.todo.server.ContactEntityService;
 import org.jboss.errai.demo.todo.client.shared.Contact;
 import org.jboss.errai.demo.todo.client.shared.ContactService;
 
-/**
- * Simple mock based service implementation.
- * 
- * @author Christian Sadilek <csadilek@redhat.com>
- */
 @ApplicationScoped
 public class ContactServiceImpl implements ContactService {
 
-	private static AtomicInteger id = new AtomicInteger(3);
-
-	private static Map<Long, Contact> contacts = new ConcurrentHashMap<Long, Contact>() {
-		{
-			put(1l, new Contact(1, "Christian"));
-			put(2l, new Contact(2, "Mike"));
-			put(3l, new Contact(3, "Jonathan"));
-		}
-	};
-
-	// (ATB) To use JPA
 	@Inject
 	private ContactEntityService entityService;
 
 	@Override
 	public List<Contact> listAllContacts() {
-		/*
-		List<Contact> contacts = new ArrayList<Contact>(ContactServiceImpl.contacts.values());
-		Collections.sort(contacts);
-		return contacts;
-		*/
-		
-		// (ATB) Use JPA
 		return entityService.getAllContacts();
 	}
 
 	@Override
 	public Response createContact(Contact contact) {
-		/*
-		long newId = id.addAndGet(1);
-		contact.setId(newId);
-		contacts.put(newId, contact);
-		return Response.ok(contact.getId()).build();
-		*/
-		
-		// (ATB) Use JPA
 		entityService.create(contact);
 	    return Response.created(UriBuilder.fromResource(ContactService.class)
 	            .path(String.valueOf(contact.getId())).build()).status(Status.OK).build();

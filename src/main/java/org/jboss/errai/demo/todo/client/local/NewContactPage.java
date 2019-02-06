@@ -1,14 +1,10 @@
 package org.jboss.errai.demo.todo.client.local;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.jboss.errai.common.client.api.Caller;
-import org.jboss.errai.common.client.api.RemoteCallback;
 import org.jboss.errai.demo.todo.client.shared.Contact;
 import org.jboss.errai.demo.todo.client.shared.ContactService;
-import org.jboss.errai.enterprise.client.jaxrs.MarshallingWrapper;
 import org.jboss.errai.ui.nav.client.local.Page;
 import org.jboss.errai.ui.nav.client.local.TransitionTo;
 import org.jboss.errai.ui.shared.api.annotations.AutoBound;
@@ -19,10 +15,8 @@ import org.jboss.errai.ui.shared.api.annotations.Model;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.TextBox;
 
 import com.google.gwt.http.client.Response;
@@ -39,7 +33,12 @@ public class NewContactPage extends Composite {
 	@Inject
 	@DataField
 	@Bound
-	private TextBox firstname;
+	private TextBox name;
+
+	@Inject
+	@DataField
+	@Bound
+	private TextBox email;
 	
 	@Inject
 	@DataField
@@ -56,8 +55,6 @@ public class NewContactPage extends Composite {
 	public void createContact(ClickEvent e) {
 	
 		contactService.call((Response response) -> {
-					//Window.alert("Lambda: Contact created: " + MarshallingWrapper.fromJSON(response.getText(), Long.class));
-					//Window.alert("Lambda: Contact created: " + response.getText());
 					goToContactListPage.go();
 		}).createContact(contact);
 	}

@@ -4,16 +4,16 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.jboss.errai.demos</groupId>
-	<artifactId>errai-demonstration</artifactId>
-    <version>4.1.0-SNAPSHOT</version>
+	<groupId>org.atb.errai.demos</groupId>
+	<artifactId>errai-contactlist</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Tutorial on Errai</name>
+    <name>Contact List Tutorial on Errai</name>
 
 
     <properties>
-        <errai.version>${project.version}</errai.version>
-        <gwt.version>2.8.1</gwt.version>
+        <errai.version>4.4.1.Final</errai.version>
+        <gwt.version>2.8.2</gwt.version>
         <elemental.version>1.0.0-beta-1</elemental.version>
         <slf4j.version>1.5.11</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

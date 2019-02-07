@@ -183,11 +183,11 @@
                     <extraJvmArgs>-Xmx3096m -XX:CompileThreshold=7000 -Derrai.jboss.home=${errai.jboss.home}
                         -Derrai.dev.context=${errai.dev.context} -Djboss.bind.address=${listening.address}
                     </extraJvmArgs>
-                    <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server>
+                    <server>org.jboss.errai.cdi.server.gwt.EmbeddedWildFlyLauncher</server> <!-- Specifies a different embedded web server to run (must implement ServletContainerLauncher) -->
                     <disableCastChecking>true</disableCastChecking>
-                    <runTarget>${errai.dev.context}/</runTarget>
+                    <runTarget>${errai.dev.context}/</runTarget> <!-- This is the starting point/page of the application -->
                     <!--<soyc>false</soyc>-->
-                    <hostedWebapp>src/main/webapp</hostedWebapp>
+                    <hostedWebapp>src/main/webapp</hostedWebapp> <!-- Location of the hosted-mode web application structure. -->
                     <strict>true</strict>
                     <compileReport>true</compileReport>
                     <saveSource>true</saveSource>

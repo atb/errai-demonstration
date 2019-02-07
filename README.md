@@ -6,38 +6,19 @@ This is a demo application that demonstrates several Errai technologies.
 This demonstration is based on [errai-jpa-demo-todo-list](https://github.com/errai/errai/tree/master/errai-demos/errai-jpa-demo-todo-list) 
 but it has been updated to a "contact list application" and simplified as much as possible. 
 
-
-Errai To-Do List Demo
-=====================
-
-This demo app shows how to use the following technologies together:
-
- * ErraiCDI
- * ErraiJPA (with an early preview of data synchronization)
- * ErraiUI Templates
- * Errai Data Binding
- * Errai Page Navigation
- * Errai Bean Validation
-
-There is a [7-minute screencast](https://vimeo.com/55454764) of an earlier version
-of this demo being created.
-
-Try It Out
-==========
-
-This demo is designed to work with a full Java EE 6 server such as JBoss EAP 6 or AS 7. Although
-it should be possible to craft a deployment of this demo to a simpler web server, it's much simpler
-to deploy to an EE 6 capable app server.
-
-
 Prerequisites
 -------------
 
+ * Java JDK 8
  * Maven 3 (run `mvn --version` on the command line to check)
- * JBoss AS 7 or EAP 6 running on the local machine
-   * With a data source named ErraiTodoDS
+   
+ * WildFly 10.0.0.Final 
+   * Warning: It seems that Errai 4.1.0 will work only with WildFly 10.0.0 (To be checked 
+     when possible)
+   * Wildfly should be automatically downloaded by Maven. It is not required to install 
+     it mannually.
 
-To configure the datasource in AS 7 or EAP 6, edit the file `standalone/configuration/standalone.xml`
+If you wish to configure a datasource in WidlFly, edit the file `standalone/configuration/standalone.xml`
 and add this immediately after the similar entry for `ExampleDS`:
 
     <datasource jndi-name="java:jboss/datasources/ErraiTodoDS" pool-name="ErraiTodoDS" enabled="true" use-java-context="true">
@@ -53,29 +34,46 @@ Of course, you are encouraged to configure the data source to connect to a more 
 such as PostgreSQL or MySQL instead of H2. With the above "in-memory" configuration, the data you
 enter into the demo will not survive restarts of the app server.
 
+Code-and-Refresh
+----------------
+
+To execute the application while in development you should use the GWT's dev mode.
+
+You do that by executing in the folder of the project:
+
+    % mvn gwt:run
+
+Then click "Launch in Default Browser" on the GWT Dev Mode window that appears. Or 
+you can open Chrome and enter the following url: http://127.0.0.1:8888/errai-demonstration
+
+Note: Maven will download and use WildFly. The Maven property `errai.jboss.home` (in the `pom.xml`) 
+contains the full path to the home directory of the application server (i.e., WildFly). 
+
+Debug Client Code
+-----------------
+
+If you use Chrome you can debug client code using "View/Developer/Developer Tools". 
+
+When you start the application using "mvn gwt:run" a server code is started in address 
+127.0.0.1:9876. This server code is able to map between the generated javascript and 
+the original java. You should be able to access the java code in "127.0.0.1:9876/sourcemaps/ContactList". 
+There you can see the java code and set breakpoints. 
+
 
 Build and Deploy
 ----------------
 
-To build a .war file and deploy it to the local running JBoss EAP 6 or AS 7 instance:
+If you have installed manually WidlFly then you can use the following instructions 
+to install the application in WildFly.
 
-    % mvn clean package jboss-as:deploy
+To build a .war file and deploy it to the local running WildFly instance:
+
+    % mvn clean package wildfly:deploy
 
 Once the above command has completed, you should be able to access the app at the following URL:
 
-    http://localhost:8080/errai-jpa-demo-todo-list/
+    http://localhost:8080/errai-demonstration/
 
-
-Code-and-Refresh
-----------------
-Configure Development mode to use your JBoss or EAP server by setting the `errai.jboss.home` property in the `pom.xml`
- to the full path to the home directory of the application server.
-
-To try it in GWT's dev mode, after completing the above steps, do this:
-
-    % mvn gwt:run
-
-Then click "Launch in Default Browser" on the GWT Dev Mode window that appears.
 
 Contact List App
 ----------------
@@ -91,6 +89,4 @@ Debug Server Code
 Type:
 
     % mvn gwt:debug
-
-
 

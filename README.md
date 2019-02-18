@@ -3,6 +3,11 @@ Errai Demonstration
 
 This is a demo application that demonstrates several Errai technologies.
 
+Errai is a GWT-based framework for building rich web applications using next-generation web technologies. See [Errai](http://erraiframework.org).
+
+GWT is a development toolkit for building and optimizing complex browser-based applications. With GWT, client and server parts of a web application are written in Java. 
+See [GWT Project](http://www.gwtproject.org). 
+
 This demonstration is based on [errai-jpa-demo-todo-list](https://github.com/errai/errai/tree/master/errai-demos/errai-jpa-demo-todo-list) 
 but it has been updated to a "contact list application" and simplified as much as possible. 
 
@@ -46,19 +51,37 @@ You do that by executing in the folder of the project:
 Then click "Launch in Default Browser" on the GWT Dev Mode window that appears. Or 
 you can open Chrome and enter the following url: http://127.0.0.1:8888/errai-demonstration
 
-Note: Maven will download and use WildFly. The Maven property `errai.jboss.home` (in the `pom.xml`) 
+Notes: 
+- Maven will download and use WildFly. The Maven property `errai.jboss.home` (in the `pom.xml`) 
 contains the full path to the home directory of the application server (i.e., WildFly). 
+- For this reason the first time you execute this command it may take some time to 
+  execute. Please be patient.
 
 Debug Client Code
 -----------------
 
-If you use Chrome you can debug client code using "View/Developer/Developer Tools". 
+If you use Chrome you can debug client code using the menu option "View/Developer/Developer Tools". 
 
-When you start the application using "mvn gwt:run" a server code is started in address 
-127.0.0.1:9876. This server code is able to map between the generated javascript and 
+When you start the application using "mvn gwt:run" a server code is started (using 
+the address 127.0.0.1:9876). This server code is able to map between the generated javascript and 
 the original java. You should be able to access the java code in "127.0.0.1:9876/sourcemaps/ContactList". 
 There you can see the java code and set breakpoints. 
 
+Debug Server Code
+-----------------
+
+If you wish to debug the server code you need to open the project in a Java IDE. It 
+is recommended to use Eclipse or IntelliJ.
+
+You should set the breakpoints in the source code of the server part of the applications.
+
+Then type in a command line:
+
+    % mvn gwt:debug
+
+Maven will start in debug mode and will wait until the IDE is connected to the debug 
+session. In Eclipse you can do this by creating a "Remote Java Application" debug configuration setting host 
+to localhost and por to 8000.
 
 Build and Deploy
 ----------------
@@ -75,18 +98,4 @@ Once the above command has completed, you should be able to access the app at th
     http://localhost:8080/errai-demonstration/
 
 
-Contact List App
-----------------
-
-Run with Code-and-Refresh
--------------------------
-
-    % mvn gwt:run
-
-Debug Server Code
------------------
-
-Type:
-
-    % mvn gwt:debug
-
+   

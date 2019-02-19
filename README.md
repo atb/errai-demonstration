@@ -86,6 +86,8 @@ to localhost and por to 8000.
 Build and Deploy
 ----------------
 
+We recommend to download and install Wildfly version 10.0.0.Final from [Wildfly.org](http://wildfly.org/downloads/).
+
 If you have installed manually WidlFly then you can use the following instructions 
 to install the application in WildFly.
 

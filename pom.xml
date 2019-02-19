@@ -159,12 +159,34 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <version>${gwt.version}</version>
                 <executions>
+
+                	<!-- Original
                     <execution>
                         <goals>
                             <goal>compile</goal>
                         </goals>
                     </execution>
+ 					-->
+ 					<!-- New entry: begin -->
+         <execution>
+            <id>gwt-clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>gwt-compile</id>
+            <goals>
+              <goal>resources</goal>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+ 					<!-- New entry: end -->
+
                 </executions>
+
+
                 <configuration>
                     <logLevel>INFO</logLevel>
                     <noServer>false</noServer>
@@ -214,7 +236,7 @@
                         <fileset>
                             <directory>${basedir}</directory>
                             <includes>
-                                <include>src/main/webapp/app/</include>
+                                <include>src/main/webapp/ContactList/</include>
                                 <include>src/main/webapp/WEB-INF/deploy/</include>
                                 <include>src/main/webapp/WEB-INF/lib/</include>
                                 <include>.errai/</include>
@@ -276,7 +298,7 @@
                             <packagingExcludes>**/javax/**/*.*,**/client/local/**/*.class</packagingExcludes>
                             <outputFileNameMapping>@{artifactId}@-@{baseVersion}@@{dashClassifier?}@.@{extension}@
                             </outputFileNameMapping>
-                            <!-- 
+                            <!--
                             <webResources>
                                 <resource>
                                     <directory>${basedir}/target/extra/app/src</directory>

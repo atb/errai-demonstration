@@ -36,3 +36,5 @@ class_list.txt
 *.jpage
 .factorypath
 dependency-reduced-pom.xml
+src/main/webapp/ContactList/
+src/main/webapp/WEB-INF/lib/

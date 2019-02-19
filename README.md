@@ -89,13 +89,24 @@ Build and Deploy
 If you have installed manually WidlFly then you can use the following instructions 
 to install the application in WildFly.
 
-To build a .war file and deploy it to the local running WildFly instance:
+To build a .war file with the application
 
-    % mvn clean package wildfly:deploy
+    % mvn clean package 
+
+and deploy it to the local running WildFly instance (in this example WILDFLY_HOME is 
+where Wildfly is installed):
+
+    % cp target/errai-demonstration.war/ WILDFLY_HOME/standalone/deployments
+    % touch WILDFLY_HOME/standalone/deployments/errai-demonstration.war.dodeploy
+
+If you have a Windows system then the last command should be:
+
+    % echo>> WILDFLY_HOME/standalone/deployments/errai-demonstration.war.dodeploy
 
 Once the above command has completed, you should be able to access the app at the following URL:
 
     http://localhost:8080/errai-demonstration/
 
-
+See [Wildfly Application Deployment](https://docs.jboss.org/author/display/WFLY10/Application+deployment) for further 
+details.
    

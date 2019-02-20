@@ -129,9 +129,11 @@
                                             <goal>resources</goal>
                                         </goals>
                                     </pluginExecutionFilter>
+                                    <!-- ATB 
                                     <action>
                                         <skip/>
                                     </action>
+                                    -->
                                 </pluginExecution>
                                 <pluginExecution>
                                     <pluginExecutionFilter>
@@ -160,14 +162,12 @@
                 <version>${gwt.version}</version>
                 <executions>
 
-                	<!-- Original
                     <execution>
                         <goals>
                             <goal>compile</goal>
                         </goals>
                     </execution>
- 					-->
- 					<!-- New entry: begin -->
+ 					<!-- New entry ATB
          <execution>
             <id>gwt-clean</id>
             <phase>clean</phase>
@@ -182,7 +182,7 @@
               <goal>compile</goal>
             </goals>
           </execution>
- 					<!-- New entry: end -->
+ 					 New entry ATB end -->
 
                 </executions>
 

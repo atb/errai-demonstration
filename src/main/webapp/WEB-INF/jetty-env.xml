@@ -4,9 +4,11 @@
 	class="org.eclipse.jetty.webapp.WebAppContext">
 
 	<New id="BeanManager" class="org.eclipse.jetty.plus.jndi.Resource">
+		<!-- ATB
 		<Arg>
-			<Ref id="webAppCtx" />
+			<Ref refid="webAppCtx" />
 		</Arg>
+		 -->
 		<Arg>BeanManager</Arg>
 		<Arg>
 			<New class="javax.naming.Reference">

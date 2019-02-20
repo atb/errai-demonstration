@@ -38,3 +38,5 @@ class_list.txt
 dependency-reduced-pom.xml
 src/main/webapp/ContactList/
 src/main/webapp/WEB-INF/lib/
+.gradle
+build

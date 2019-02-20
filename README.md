@@ -98,8 +98,11 @@ To build a .war file with the application
 and deploy it to the local running WildFly instance (in this example WILDFLY_HOME is 
 where Wildfly is installed):
 
-    % cp target/errai-demonstration.war/ WILDFLY_HOME/standalone/deployments
+    % cp target/errai-demonstration.war WILDFLY_HOME/standalone/deployments
     % touch WILDFLY_HOME/standalone/deployments/errai-demonstration.war.dodeploy
+
+Note that the last command is optional since Wildfly will auto-deploy the war when 
+it is detected in the deployments folder. 
 
 If you have a Windows system then the last command should be:
 

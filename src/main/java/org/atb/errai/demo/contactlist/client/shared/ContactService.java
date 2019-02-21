@@ -15,7 +15,6 @@ public interface ContactService {
   @Produces("application/json")
   public List<Contact> listAllContacts();
   
-  
   @POST
   @Consumes("application/json")
   @Produces("text/plain")

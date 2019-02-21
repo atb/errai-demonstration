@@ -16,6 +16,7 @@
 
 package org.atb.errai.demo.contactlist.server;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.core.Response;
@@ -36,7 +37,8 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public List<Contact> listAllContacts() {
-		return entityService.getAllContacts();
+		return new ArrayList<Contact>();
+		//return entityService.getAllContacts();
 	}
 
 	@Override

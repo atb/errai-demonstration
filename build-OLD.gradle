@@ -1,0 +1,246 @@
+// (ATB)
+
+// See: https://github.com/esoco/gwt-gradle-plugin
+plugins {
+    id "de.esoco.gwt" version "1.0.8"
+}
+
+apply plugin: 'war'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+apply plugin: 'de.esoco.gwt' // builds a full web application
+
+//Java version compatibility to use when compiling Java source.
+sourceCompatibility = 1.8
+//Java version to generate classes for.
+targetCompatibility = 1.8
+//Script Version
+version = '1.0'
+
+repositories {
+	mavenCentral()
+
+	// JBoss Public Repo
+	maven {
+        url "https://repository.jboss.org/nexus/content/groups/public"
+    }
+    
+    // Sonatype Public Snapshots Repo
+	maven {
+        url "https://oss.sonatype.org/content/repositories/public"
+    }
+    
+}
+
+// This two lines are required so that the java compiler finds the persistence.xml file during compilation
+//sourceSets.main.output.resourcesDir = sourceSets.main.output.classesDir
+//compileJava.dependsOn(processResources)
+
+dependencies {
+ 	testCompile 'junit:junit:4.12'	// ok
+ 	testCompile 'org.easymock:easymock:2.5.2'
+	testCompile 'com.google.gwt:gwt-dev:2.8.2' 
+	
+  	//providedCompile "com.google.gwt:gwt-user:2.8.2"
+  	//providedCompile "com.google.gwt:gwt-dev:2.8.2"
+  	//runtime "com.google.gwt:gwt-servlet:2.8.2"
+
+/**
+  	implementation "org.jboss.errai:errai-cdi-jboss:4.1.0-SNAPSHOT" // ok
+    implementation "org.jboss.errai:errai-cdi-server:4.1.0-SNAPSHOT" // ok
+	implementation "org.jboss.errai:errai-cordova:4.1.0-SNAPSHOT" // ok
+	implementation "org.jboss.errai:errai-javaee-all:4.1.0-SNAPSHOT" // ok
+	compileOnly "org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.1.Final" // ok
+	implementation "org.slf4j:slf4j-log4j12:1.7.7" // ok
+  	
+  	// For running...
+  	runtimeOnly "org.jboss.errai:errai-jboss-as-support:4.1.0-SNAPSHOT" // ok
+    runtimeOnly "com.google.guava:guava-gwt:20.0"	// ok
+    runtimeOnly "dom4j:dom4j:1.6.1"	// ok
+    runtimeOnly "hsqldb:hsqldb:1.8.0.7"	// ok
+    runtimeOnly "javax.enterprise:cdi-api:1.2"	// ok
+    runtimeOnly "javax.inject:javax.inject:1"	// ok
+    runtimeOnly "javax.validation:validation-api:1.0.0.GA"	// ok
+    runtimeOnly "org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" // ok
+    runtimeOnly "org.hibernate:hibernate-core:5.1.4.Final"	// ok
+    runtimeOnly "org.hibernate:hibernate-entitymanager:5.1.4.Final"	// ok
+    runtimeOnly "org.hibernate:hibernate-validator:4.1.0.Final"	// ok
+    runtimeOnly "org.jboss.errai:errai-cdi-jboss:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-codegen-gwt:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-data-binding:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-javax-enterprise:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-jaxrs-client:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-jpa-client:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-navigation:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-tools:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-ui:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-html5:4.1.0-SNAPSHOT"	// ok
+    //compileOnly "org.jboss.logging:jboss-logging:3.3.0.Final"	// ok
+    runtimeOnly "org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Final"	// ok
+    runtimeOnly "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final"	// ok
+    runtimeOnly "xml-apis:xml-apis:1.4.01"	// ok
+    runtimeOnly "io.netty:netty-codec-http:4.1.16.Final"	// ok
+    
+    runtimeOnly "org.jboss.errai:errai-javaee-all:4.1.0-SNAPSHOT" 	// ? unnecessary?
+    
+    //runtimeOnly "org.jboss.weld.servlet:weld-servlet-core:3.1.0.Final"	// For CDI (CDI: Contexts and Dependency Injection for the Java EE Platform) support in Jetty via Weld 
+	//runtimeOnly "org.eclipse.jetty:jetty-util:9.2.14.v20151106"
+	//runtimeOnly "org.eclipse.jetty:jetty-server:9.2.14.v20151106"
+	
+	// Needed for Resteasy in servlet 3.0 containers such as jetty.
+	// see: http://docs.jboss.org/resteasy/docs/3.0.17.Final/userguide/html_single/index.html#d4e113
+    //runtimeOnly "org.jboss.resteasy:resteasy-jaxrs:3.6.3.Final"		// ?	
+    //runtimeOnly "org.jboss.resteasy:resteasy-jaxb-provider:3.6.3.Final"		// ?	
+    
+	//runtimeOnly "org.jboss.resteasy:resteasy-servlet-initializer:3.6.3.Final"
+**/
+
+	implementation "org.jboss.errai:errai-javaee-all:4.1.0-SNAPSHOT" // ok
+	
+	compileOnly "org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.1.Final" // ok
+    runtimeOnly "org.jboss.errai:errai-javax-enterprise:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "org.jboss.errai:errai-jpa-client:4.1.0-SNAPSHOT"	// ok
+    runtimeOnly "com.google.guava:guava-gwt:20.0"	// ok
+    runtimeOnly "org.jboss.errai:errai-data-binding:4.1.0-SNAPSHOT"	// ok
+        
+	compileOnly "org.jboss.errai:errai-ioc:4.1.0-SNAPSHOT"
+	compile "org.jboss.errai:errai-cdi-client:4.1.0-SNAPSHOT"
+	compile "org.jboss.errai:errai-cdi-server:4.1.0-SNAPSHOT"
+	compile "org.jboss.errai:errai-jaxrs-client:4.1.0-SNAPSHOT"
+	compile "org.jboss.errai:errai-jaxrs-provider:4.1.0-SNAPSHOT"
+	// compile "javax.enterprise:cdi-api:1.2" -> Provided
+    // compile "org.jboss.resteasy:resteasy-jaxrs:3.0.26.Final"
+    compile "org.jboss.resteasy:resteasy-jaxrs:3.0.16.Final"
+    
+    compileOnly "com.google.gwt:gwt-dev:2.8.2"
+	// compile "org.slf4j:slf4j-log4j12:1.7.7"
+ 	
+	// For Jetty
+    runtimeOnly "org.jboss.resteasy:resteasy-servlet-initializer:3.0.16.Final"
+    //runtimeOnly "org.jboss.resteasy:resteasy-jackson-provider:3.0.26.Final"
+    runtimeOnly "org.jboss.resteasy:resteasy-jackson-provider:3.0.16.Final"
+    
+    compile "org.eclipse.jetty:jetty-server:9.4.15.v20190215"
+    compile "org.eclipse.jetty:jetty-servlet:9.4.15.v20190215"
+    compile "org.jboss.weld.servlet:weld-servlet:2.4.1.Final"
+    // compileOnly "org.jboss.weld.se:weld-se-core:2.4.1.Final"
+		
+  	// , { exclude group: "asm" }	
+  	
+  	// For JPA / Eclipselink - ATTENTION Hibernate and EclipseLink are both implementations of JPA
+    //compile 'org.eclipse.persistence:eclipselink:2.6.1'
+	//compile 'org.eclipse.persistence:org.eclipse.persistence.jpa.modelgen.processor:2.6.1'
+	//compile 'com.h2database:h2:1.4.191'
+  	
+    runtimeOnly "org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" // ok
+    runtimeOnly "org.hibernate:hibernate-core:5.1.4.Final"	// ok
+    runtimeOnly "org.hibernate:hibernate-entitymanager:5.1.4.Final"	// ok
+    runtimeOnly "org.hibernate:hibernate-validator:4.1.0.Final"	// ok  	
+    //runtimeOnly "org.hibernate:hibernate-validator:5.1.4.Final"	// ok  	
+   
+	// Is this required for hibernate?    
+    runtimeOnly "org.jboss.spec.javax.interceptor:jboss-interceptors-api_1.2_spec:1.0.0.Final"	// ok
+    runtimeOnly "org.jboss.spec.javax.transaction:jboss-transaction-api_1.2_spec:1.0.0.Final"	// ok
+}
+
+// If we want to use the default ant build inside gradle
+// ant.importBuild "build.xml"
+
+gwt {
+
+	// module 'pt.isep.cms.Showcase'
+	module 'org.atb.errai.demo.contactlist.ContactList'
+	//module 'com.google.gwt.sample.contacts.Contacts'
+
+	/** add gwt nature on eclipse project. require apply plugin: 'eclipse' to work. default : false*/
+	gwtPluginEclipse = true
+
+	gwtVersion='2.8.2'
+
+	compile {
+		sourceLevel = '1.8'
+	}
+
+	/** Jetty version */
+	// ORIGINAL jettyVersion = '9.4.12.v20180830'
+	jettyVersion = '9.4.15.v20190215'
+	// jettyVersion = '9.2.14.v20151106'
+
+	jetty {
+        /** enable debugging. */
+        debugJava = true
+        /** debug port to listen. */
+        debugPort = 8000
+        /** wait for debugger attachment. */
+        debugSuspend = false
+    }
+}
+
+// The Buildship Gradle plugin for Eclipse ignores the eclipse task and therefore
+// overwrites any classpath generated by plugins. To prevent this the following 
+// code needs to be added to build.gradle. The first entry adds the GWT plugin, 
+// the second one prevents that Buildship generates the classpath containers entry:
+eclipse {
+	classpath {
+		containers 'com.gwtplugins.gwt.eclipse.core.GWT_CONTAINER',
+		           'org.eclipse.buildship.core.gradleclasspathcontainer'
+	}
+}
+
+
+// Jacoco
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+    }
+}
+
+// This task generates the coverage report for the integration tests.
+// Notice that it only includes data about the server code sice Jaccoco is not able to get data about cliente code that is transpiled to javascript
+task jacocoIntegrationReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
+	sourceSets sourceSets.main
+
+    executionData = files("${buildDir}/jacoco/integrationTest.exec")
+
+    reports {
+        html.enabled = true
+        xml.enabled = false
+        csv.enabled = false
+    }
+}
+
+// Integration Tests
+task integrationTest(type: Test) {
+	filter {
+		//all GWT unit tests, by naming convention
+      	includeTestsMatching "*GWTTest*"
+	}
+    jacoco {
+    		append = true
+    		enabled = true
+    		//classDumpFile = file("${buildDir}/jacoco/classpathdumps")
+
+    		excludes = ["com/steadystate/**"]
+    }
+    // These Properties are required to run gwt integration tests
+    systemProperties['gwt.args'] = "-devMode -logLevel WARN -war www-test"
+}
+
+tasks.withType(Test) {
+    reports.html.destination = file("${reporting.baseDir}/${name}")
+}
+
+// Unit Tests
+test {
+	filter {
+		//all JRE unit tests, by naming convention
+      	includeTestsMatching "*JRETest*"
+	}
+    jacoco {
+    		append = true
+    		enabled = true
+  		//classDumpFile = file("${buildDir}/jacoco/classpathdumps")
+    }
+}

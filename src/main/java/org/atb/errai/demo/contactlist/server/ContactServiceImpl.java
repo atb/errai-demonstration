@@ -25,6 +25,7 @@ import javax.ws.rs.core.Response.Status;
 import org.atb.errai.demo.contactlist.client.shared.Contact;
 import org.atb.errai.demo.contactlist.client.shared.ContactService;
 import org.atb.errai.demo.contactlist.server.ContactEntityService;
+import org.slf4j.Logger;
 
 import javax.ws.rs.core.UriBuilder;
 import javax.inject.Inject;
@@ -34,15 +35,20 @@ public class ContactServiceImpl implements ContactService {
 
 	@Inject
 	private ContactEntityService entityService;
+	
+	// For logging
+	@Inject Logger logger;
 
 	@Override
 	public List<Contact> listAllContacts() {
-		return new ArrayList<Contact>();
-		//return entityService.getAllContacts();
+		logger.info("listAllContacts in Server!");
+		//return new ArrayList<Contact>();
+		return entityService.getAllContacts();
 	}
 
 	@Override
 	public Response createContact(Contact contact) {
+		logger.info("createContact in Server!");
 		entityService.create(contact);
 	    return Response.created(UriBuilder.fromResource(ContactService.class)
 	            .path(String.valueOf(contact.getId())).build()).status(Status.OK).build();

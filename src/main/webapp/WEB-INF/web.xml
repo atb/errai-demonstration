@@ -33,12 +33,35 @@
 		<location>/</location>
 	</error-page>
 
+<!-- (ATB) 
+		<context-param> 
+			<param-name>resteasy.scan</param-name> 
+			<param-value>true</param-value> 
+		</context-param> 
+		
+		<context-param>
+			<param-name>resteasy.servlet.mapping.prefix</param-name>
+			<param-value>/rest</param-value>
+		</context-param>
+-->
+
 	<!-- For REST... but should not be used in in servlet 3.0 containers such 
 		as jetty. // see: http://docs.jboss.org/resteasy/docs/3.0.17.Final/userguide/html_single/index.html#d4e113 
-		<context-param> <param-name>resteasy.scan</param-name> <param-value>true</param-value> 
-		</context-param> <filter> <filter-name>Resteasy</filter-name> <filter-class>org.jboss.resteasy.plugins.server.servlet.FilterDispatcher</filter-class> 
-		</filter> <filter-mapping> <filter-name>Resteasy</filter-name> <url-pattern>/rest/*</url-pattern> 
-		</filter-mapping> -->
+		Not required for wildfly 
+		-->
+		<context-param> 
+			<param-name>resteasy.scan</param-name> 
+			<param-value>true</param-value> 
+		</context-param> 
+		<filter> 
+			<filter-name>Resteasy</filter-name> 
+			<filter-class>org.jboss.resteasy.plugins.server.servlet.FilterDispatcher</filter-class> 
+		</filter> 
+		<filter-mapping> 
+			<filter-name>Resteasy</filter-name> 
+			<url-pattern>/rest/*</url-pattern> 
+		</filter-mapping> 
+	
 
 	<!-- resteasy.servlet.mapping.prefix is needed only if you want prepend 
 		a relative path to the API application <filter-mapping> <filter-name>resteasy.servlet.mapping.prefix</filter-name> 
@@ -47,7 +70,7 @@
 	<!-- <servlet-mapping> <servlet-name>Resteasy</servlet-name> <url-pattern>/rest/*</url-pattern> 
 		</servlet-mapping> -->
 
-	<!-- ATB
+	<!-- ATB - For Jetty, configuration OLD
 	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/rest</param-value>
@@ -74,7 +97,7 @@
 	</resource-env-ref>
 	-->
 
-	<!-- For Jetty -->
+	<!-- For Jetty  - For Jetty, configuration NEW
     <listener>
         <listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
     </listener>
@@ -107,5 +130,6 @@
         <param-name>resteasy.resources</param-name>
         <param-value>org.atb.errai.demo.contactlist.server.ContactServiceImpl</param-value>
     </context-param>
+     -->
     
 </web-app>

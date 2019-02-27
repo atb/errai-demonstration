@@ -15,6 +15,7 @@ import org.jboss.errai.ui.shared.api.annotations.Model;
 import org.jboss.errai.ui.shared.api.annotations.Templated;
 
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextBox;
@@ -53,9 +54,10 @@ public class NewContactPage extends Composite {
 	
 	@EventHandler("create")
 	public void createContact(ClickEvent e) {
-	
+		 Window.alert("createClicked");
 		contactService.call((Response response) -> {
 					goToContactListPage.go();
 		}).createContact(contact);
+		 Window.alert("createClicked exiting...");
 	}
 }

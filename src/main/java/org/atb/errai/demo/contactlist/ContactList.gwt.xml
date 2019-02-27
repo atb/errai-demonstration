@@ -19,4 +19,7 @@
 	<inherits name="org.jboss.errai.databinding.DataBinding" />
 	<inherits name="org.jboss.errai.enterprise.Jaxrs" />
 	<inherits name="org.jboss.errai.jpa.JPA" />
+	
+	<!-- Only Safari and Chrome -->
+	<set-property name="user.agent" value="safari" /> 
 </module>

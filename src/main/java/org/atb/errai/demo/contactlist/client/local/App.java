@@ -31,7 +31,7 @@ public class App extends Composite {
   @PostConstruct
   public void clientMain() {
 	  
-	  // To use jackson jsin and not errai json
+	// To use jackson json and not errai json
 	RestClient.setJacksonMarshallingActive(true);
 	  
     content.clear();

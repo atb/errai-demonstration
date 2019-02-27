@@ -48,7 +48,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public Response createContact(Contact contact) {
-		logger.info("createContact in Server!");
+		logger.info("createContact in Server! name="+contact.getName());
 		entityService.create(contact);
 	    return Response.created(UriBuilder.fromResource(ContactService.class)
 	            .path(String.valueOf(contact.getId())).build()).status(Status.OK).build();

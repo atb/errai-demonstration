@@ -114,4 +114,21 @@ Once the above command has completed, you should be able to access the app at th
 
 See [Wildfly Application Deployment](https://docs.jboss.org/author/display/WFLY10/Application+deployment) for further 
 details.
+
+Gradle
+------
+
+To debug the server code in docker/wildfly see: [link](https://stackoverflow.com/questions/46082411/debugging-a-wildfly-application-on-docker-through-eclipse)
+
+The command is:
+
+    docker run -it -p 8080:8080 -p 8787:8787 jboss/wildfly /opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 --debug
+
+How to convert docker run into compose: [link](https://stackoverflow.com/questions/49984686/convert-a-docker-run-command-into-a-docker-compose)
+
+See also: [link1](http://docs.wildfly.org/14/Developer_Guide.html#JPA_Reference_Guide)
+
+To solve the debug port problem with wildly and docker see [link](https://stackoverflow.com/questions/53198798/remote-debugging-no-connection-to-wildfly-14-on-openjdk-11-at-port-8787)
+
+
    

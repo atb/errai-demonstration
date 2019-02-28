@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  wildfly:
+    build: ./wildfly
+    image: demo_wildfly
+    container_name: demo_wildfly
+    volumes:
+      - ../../../war:/opt/jboss/wildfly/standalone/deployments:rw
+    ports:
+      - 8080:8080
+      - 8787:8787
+    networks:
+      - demo
+    command: '/opt/jboss/wildfly/bin/standalone.sh -b 0.0.0.0 --debug *:8787'
+    
+
+networks:
+  demo:
+    external: false

@@ -43,7 +43,8 @@ public class ContactServiceImpl implements ContactService {
 	public List<Contact> listAllContacts() {
 		logger.info("listAllContacts in Server!");
 		//return new ArrayList<Contact>();
-		return entityService.getAllContacts();
+		List<Contact> temp=entityService.getAllContacts();
+		return temp;
 	}
 
 	@Override

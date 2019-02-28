@@ -220,11 +220,11 @@ task redeploy(type: Copy, dependsOn: war) {
 }
 
 task stop {
-  doLast { exec("docker-compose -f src/main/docker/wildfly.yml down") }
+  doLast { exec("docker-compose -f src/main/docker/wildfly-debug.yml down") }
 }
 
 task start(dependsOn: stop) {
   doFirst { file(deploy.dir.app).mkdirs() }
-  doLast { exec("docker-compose -f src/main/docker/wildfly.yml up -d") }
+  doLast { exec("docker-compose -f src/main/docker/wildfly-debug.yml up -d") }
   finalizedBy redeploy
 }

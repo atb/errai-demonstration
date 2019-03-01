@@ -34,6 +34,11 @@ public class ContactEntityService {
   public void update(final Contact contact) {
     em.merge(contact);
   }
+  
+  public Contact getById(final Long id) {
+	  final   Contact contact = em.find(Contact.class, id);
+	  return contact;
+  }
 
   public void delete(final Long id) {
     final Contact contact = em.find(Contact.class, id);

@@ -49,6 +49,7 @@
 		as jetty. // see: http://docs.jboss.org/resteasy/docs/3.0.17.Final/userguide/html_single/index.html#d4e113 
 		Not required for wildfly 
 		-->
+		<!-- (ATB-2019-03-01) Aparentemente se não colocarmos isto os web services nao chegam a ser invocados! -->
 		<context-param> 
 			<param-name>resteasy.scan</param-name> 
 			<param-value>true</param-value> 
@@ -61,7 +62,6 @@
 			<filter-name>Resteasy</filter-name> 
 			<url-pattern>/rest/*</url-pattern> 
 		</filter-mapping> 
-	
 
 	<!-- resteasy.servlet.mapping.prefix is needed only if you want prepend 
 		a relative path to the API application <filter-mapping> <filter-name>resteasy.servlet.mapping.prefix</filter-name> 

@@ -130,5 +130,28 @@ See also: [link1](http://docs.wildfly.org/14/Developer_Guide.html#JPA_Reference_
 
 To solve the debug port problem with wildly and docker see [link](https://stackoverflow.com/questions/53198798/remote-debugging-no-connection-to-wildfly-14-on-openjdk-11-at-port-8787)
 
+How to configure H2 to store data in the file system: [link](https://stackoverflow.com/questions/9461770/where-does-h2s-embedded-databases-store-the-data)
 
-   
+>>> NOTA: PROVAVELMENTE O WILDFLY 15 NÃO TEM DEFINIDO O DATASOURCE QUE ESTÁ REFERIDO NO 
+persistence.xml <<<<
+
+To open a bash shell in the docker wildfly do:
+
+    docker exec -i -t demo_wildfly /bin/bash
+
+Admin console: http://127.0.0.1:9990
+
+>> Testing in a local wildfly 15 installation. The problem seems to be related to the 
+@injectd objects are not working. See EntityManagerFactory...
+
+Note:
+Testing in local wildfly 15:
+1- copy war to deployment wildfly
+2- run standlone
+3- a h2 database in ~/test-db/test is created
+4- open the database with h2 console (after stoping wildfly)
+5- the table is created but it is empty!!!
+
+>>> It sould be related to the h2 driver version and the transaction model?!
+    - Even if we manually insert a record in the table JPA will not "load" it in the application!!!!
+

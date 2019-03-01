@@ -15,6 +15,7 @@ buildscript {
   ext.versions = [ gmd: [:] ]
   versions.gwt          =   "2.8.2"
   versions.errai        =   "4.1.0-SNAPSHOT"
+  //versions.errai        =   "4.5.0-SNAPSHOT"
 //  versions.gmd.core     =   "2.0-rc3"
 //  versions.gmd.jquery   =   "1.0-rc3"
 //  versions.gmd.table    =   "1.0-rc3"
@@ -61,14 +62,28 @@ repositories {
 }
 
 dependencies {
-  providedCompile "com.google.gwt:gwt-user:$versions.gwt"
-  providedCompile "com.google.gwt:gwt-dev:$versions.gwt"
-  runtime "com.google.gwt:gwt-servlet:$versions.gwt"
+	// For GWT
+ 	providedCompile "com.google.gwt:gwt-user:$versions.gwt"
+ 	providedCompile "com.google.gwt:gwt-dev:$versions.gwt"
+ 	runtime "com.google.gwt:gwt-servlet:$versions.gwt"
+    providedCompile "com.google.guava:guava-gwt:20.0"	// ok
 
-  compile "org.jboss.errai:errai-javaee-all:$versions.errai", { exclude group: "asm" }
-  compile "org.jboss.errai:errai-jboss-as-support:$versions.errai"
-   
-  providedCompile "org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.1.Final" // ok
+	// For hibernate 	
+    providedCompile "org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" // ok
+    providedCompile "org.hibernate:hibernate-core:5.1.4.Final"	// ok
+    providedCompile "org.hibernate:hibernate-entitymanager:5.1.4.Final"	// ok
+    providedCompile "org.hibernate:hibernate-validator:4.1.0.Final"	// ok  
+
+	// For Errai
+	compile "org.jboss.errai:errai-javaee-all:$versions.errai", { exclude group: "asm" }
+ 	compile "org.jboss.errai:errai-jboss-as-support:$versions.errai"
+  	compile "org.jboss.errai:errai-cdi-jboss:$versions.errai" // ok
+    compile "org.jboss.errai:errai-cdi-server:$versions.errai" // ok
+  	providedCompile "org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.1.Final" // ok  
+    providedCompile "org.jboss.errai:errai-jaxrs-client:$versions.errai"	// ok    
+  	  	   	
+	// For Wildfly
+	// providedCompile 'org.wildfly:wildfly-spec-api:15.0.1.Final' 
 
   //providedCompile "com.github.gwtmaterialdesign:gwt-material:$versions.gmd.core"
   //providedCompile "com.github.gwtmaterialdesign:gwt-material-addins:$versions.gmd.core"
@@ -76,11 +91,14 @@ dependencies {
   //providedCompile "com.github.gwtmaterialdesign:gwt-material-jquery:$versions.gmd.jquery"
   //providedCompile "com.github.gwtmaterialdesign:gwt-material-table:$versions.gmd.table"
 
+	/*
+  	providedCompile "org.jboss.spec.javax.ejb:jboss-ejb-api_3.2_spec:1.0.1.Final" // ok
+
 	// (ATB)
-    compile "org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" // ok
-    compile "org.hibernate:hibernate-core:5.1.4.Final"	// ok
-    compile "org.hibernate:hibernate-entitymanager:5.1.4.Final"	// ok
-    compile "org.hibernate:hibernate-validator:4.1.0.Final"	// ok  
+    providedCompile "org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" // ok
+    providedCompile "org.hibernate:hibernate-core:5.1.4.Final"	// ok
+    providedCompile "org.hibernate:hibernate-entitymanager:5.1.4.Final"	// ok
+    providedCompile "org.hibernate:hibernate-validator:4.1.0.Final"	// ok  
     
     // see: https://www.gesellix.net/post/providedcompile-and-compile-dependencies-with-gradle/
     providedCompile "dom4j:dom4j:1.6.1"		// will not be included in the package	
@@ -91,7 +109,7 @@ dependencies {
  
  	compile "org.jboss.errai:errai-cdi-jboss:4.1.0-SNAPSHOT" // ok
     compile "org.jboss.errai:errai-cdi-server:4.1.0-SNAPSHOT" // ok
-        
+	*/        
 }
 
 clean.doFirst {

@@ -54,10 +54,10 @@ public class NewContactPage extends Composite {
 	
 	@EventHandler("create")
 	public void createContact(ClickEvent e) {
-		 Window.alert("createClicked");
+		 //Window.alert("createClicked");
 		contactService.call((Response response) -> {
 					goToContactListPage.go();
 		}).createContact(contact);
-		 Window.alert("createClicked exiting...");
+		 //Window.alert("createClicked exiting...");
 	}
 }

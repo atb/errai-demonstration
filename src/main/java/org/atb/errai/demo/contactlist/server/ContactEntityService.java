@@ -21,9 +21,9 @@ public class ContactEntityService {
   private EntityManager em;
 
   public List<Contact> getAllContacts() {
-    //return em.createNamedQuery(Contact.ALL_CONTACTS_QUERY, Contact.class).getResultList();
+    return em.createNamedQuery(Contact.ALL_CONTACTS_QUERY, Contact.class).getResultList();
 
-    return em.createQuery("SELECT c FROM Contact c ORDER BY c.id", Contact.class).getResultList();
+    //return em.createQuery("SELECT c FROM Contact c ORDER BY c.id", Contact.class).getResultList();
     
   }
 

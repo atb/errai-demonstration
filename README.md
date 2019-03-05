@@ -152,6 +152,7 @@ Testing in local wildfly 15:
 4- open the database with h2 console (after stoping wildfly)
 5- the table is created but it is empty!!!
 
->>> It sould be related to the h2 driver version and the transaction model?!
+>>> It should be related to the h2 driver version and the transaction model?!
     - Even if we manually insert a record in the table JPA will not "load" it in the application!!!!
+- Problem fixed: See persistence.xml
 

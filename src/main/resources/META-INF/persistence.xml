@@ -2,19 +2,21 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="forge-default" transaction-type="JTA">
     <description>Forge Persistence Unit</description>
-    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <!-- <provider>org.hibernate.ejb.HibernatePersistence</provider> This class is deprecated from hibernate 4.3! --> 
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider> 
     <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
-    <class>org.atb.errai.demo.contactlist.client.shared.Contact</class>
+    <!-- <exclude-unlisted-classes>false</exclude-unlisted-classes>  -->
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <class>org.atb.errai.demo.contactlist.client.shared.Contact</class>  
     <properties>
-      <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
       <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
-		<!-- unnecessary!?
+	  <!-- unnecessary!?
       <property name="hibernate.transaction.flush_before_completion" value="true"/>
       <property name="hibernate.flushMode" value="FLUSH_AUTO" />
-       -->
+      -->
     </properties>
   </persistence-unit>
 </persistence>

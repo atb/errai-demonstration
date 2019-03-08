@@ -156,3 +156,22 @@ Testing in local wildfly 15:
     - Even if we manually insert a record in the table JPA will not "load" it in the application!!!!
 - Problem fixed: See persistence.xml
 
+>>>
+
+Nao parece ser necessaria a seguinte dependencia: org.hibernate:hibernate-validator:4.1.0.Final
+
+O widlfly queixa-se que falta a seguinte classe: Caused by: java.lang.ClassNotFoundException: org.jboss.errai.common.server.api.ErraiBootstrapFailure
+Parece que esta não vai no war pois uma das dependencias providedCompile tira o errai-commons do war!
+    - Era a linhe compileProvided "org.jboss.errai:errai-jaxrs-client:$versions.errai"
+      - Passou a ompile "org.jboss.errai:errai-jaxrs-client:$versions.errai"
+
+>>> Ver a configuração do proprio datasource no wildfly!!
+    - Poderá ser tambem relacionado com a capacidade (ou falta dela) do diver do H2!!!
+
+>>> Problema resolvido: Tudo devido a forma como estao especificadas as dependencias mo 
+gradle.build!
+
+
+
+
+

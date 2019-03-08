@@ -19,7 +19,8 @@
         <slf4j.version>1.5.11</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <errai.dev.context>${project.artifactId}</errai.dev.context>
-        <as.version>10.0.0.Final</as.version>
+        <as.version>10.0.0.Final</as.version> 
+        <!-- (ATB; 2019-03-07) <as.version>14.0.1.Final</as.version> -->
         <!-- Add the absolute path for $JBOSS_HOME below to manage another instance -->
         <errai.jboss.home>${project.build.directory}/wildfly-${as.version}</errai.jboss.home>
         <!-- Listening Address, to override on a per-profile basis -->
@@ -268,7 +269,8 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.jboss.errai</groupId>
+                                    <groupId>org.jboss.errai</groupId> 
+                                    <!-- (ATB; 2019-03-07) <groupId>org.wildfly</groupId> -->
                                     <artifactId>wildfly-dist</artifactId>
                                     <version>${as.version}</version>
                                     <type>zip</type>

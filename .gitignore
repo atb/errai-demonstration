@@ -40,4 +40,5 @@ src/main/webapp/ContactList/
 src/main/webapp/WEB-INF/lib/
 .gradle
 build
+war/
 

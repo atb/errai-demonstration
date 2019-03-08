@@ -171,6 +171,10 @@ Parece que esta não vai no war pois uma das dependencias providedCompile tira o
 >>> Problema resolvido: Tudo devido a forma como estao especificadas as dependencias mo 
 gradle.build!
 
+*IMPORTANT NOTE:* IF ECLIPSE IS OPEN IT MAY BE NECESSARY TO RELOAD MAVEN FROM ECLIPSE 
+SO THAT THE BUILD GRADLE FROM THE COMMAND LINE GENERATES THE "GOOD" WAR. -> INESTIGATE 
+WHY!!
+
 
 
 
